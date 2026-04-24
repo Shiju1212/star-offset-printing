@@ -1,0 +1,57 @@
+:root {
+  --ink: #0f0f0f;
+  --paper: #f9f6f1;
+  --cream: #f2ede4;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --rust: #8b3a1e;
+  --charcoal: #2b2b2b;
+  --mid: #6b6560;
+  --border: #ddd8d0;
+  --white: #ffffff;
+  --shadow: rgba(15, 15, 15, 0.10);
+  --shadow-lg: rgba(15, 15, 15, 0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  scroll-margin-top: 80px;
+}

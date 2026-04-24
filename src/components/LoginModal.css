@@ -1,0 +1,201 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeOverlay 0.25s ease;
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  animation: slideModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--border);
+}
+
+@keyframes slideModal {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Decorative rings */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.15);
+  pointer-events: none;
+}
+
+.ring-1 { width: 180px; height: 180px; top: -80px; right: -60px; }
+.ring-2 { width: 120px; height: 120px; top: -40px; right: -20px; border-color: rgba(201,168,76,0.25); }
+.ring-3 { width: 200px; height: 200px; bottom: -100px; left: -80px; border-color: rgba(201,168,76,0.08); }
+
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--mid);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--rust);
+  color: white;
+  border-color: transparent;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-icon {
+  margin-bottom: 0.4rem;
+  animation: iconBounce 0.6s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes iconBounce {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.coming-soon-tag {
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.35);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 340px;
+}
+
+/* Progress bar */
+.progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--cream);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 85%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 10px;
+  animation: progressFill 1.2s 0.4s ease both;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 85%; }
+}
+
+.progress-label {
+  font-size: 0.74rem;
+  color: var(--mid);
+  letter-spacing: 0.3px;
+  margin-top: -0.4rem;
+}
+
+.modal-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 0.4rem 0;
+}
+
+.modal-alt {
+  font-size: 0.85rem;
+  color: var(--mid);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  border: none;
+  text-decoration: none;
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+}
+
+.wa-btn {
+  background: #25d366;
+  color: white;
+  box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+}
+
+.wa-btn:hover {
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+}
+
+.back-btn {
+  background: var(--cream);
+  color: var(--charcoal);
+  border: 1px solid var(--border) !important;
+}
+
+.back-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
