@@ -19,7 +19,7 @@ export default function Contact() {
           {/* Left: Form */}
           <div className="contact-form-wrap">
             <h3 className="form-heading">Send Your Print Request</h3>
-            <form action="https://formspree.io/f/mykloern" method="POST">
+            <form action="https://formspree.io/f/xzdyolan" method="POST">
             <div className="contact-form">
               <div className="form-row">
                 <div className="form-group">
