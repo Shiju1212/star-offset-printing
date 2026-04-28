@@ -3,8 +3,40 @@ import './Contact.css';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const response = await fetch("https://formspree.io/f/xzdyolan", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(form),
+  });
+
+  if (response.ok) {
+    setSubmitted(true);
+
+    // Clear form
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    });
+
+    setTimeout(() => {
+      setSubmitted(false)
+    }, 3000);
+  } else {
+    alert("Something went wrong. Please try again.");
+  }
+};
 
   return (
     <section id="contact" className="contact">
@@ -19,7 +51,12 @@ export default function Contact() {
           {/* Left: Form */}
           <div className="contact-form-wrap">
             <h3 className="form-heading">Send Your Print Request</h3>
-            <form action="https://formspree.io/f/xzdyolan" method="POST">
+            {submitted && (
+              <div className="success-message">
+                ✅ Your form was submitted successfully!
+              </div>
+            )}
+            <form onSubmit={handleSubmit}>
             <div className="contact-form">
               <div className="form-row">
                 <div className="form-group">
@@ -40,7 +77,13 @@ export default function Contact() {
                     name="email"
                     placeholder="Email (optional)"
                     value={form.email}
-                    onChange={handle}
+                    onChange={(e) => 
+                      setForm({
+                        ...form, email: e.target.value.trim()
+                      })
+                    }
+                    pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                    title="Please enter a valid email address"
                   />
                 </div>
               </div>
@@ -51,7 +94,13 @@ export default function Contact() {
                   name="phone"
                   placeholder="Mobile number (for quick contact)"
                   value={form.phone}
-                  onChange={handle}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setForm({...form, phone: value});
+                  }}
+                  minLength={10}
+                  maxLength={10}
+                  title="Please enter a valid 10-digit mobile number"
                   required
                 />
               </div>
@@ -72,7 +121,7 @@ export default function Contact() {
                   <path d="M2 8h12M9 4l5 4-5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
-              <input type="hidden" name="_redirect" value="https://starprinting.in/thank-you"></input>
+              <input type="hidden" name="_next" value="https://starprinting.in/thank-you"></input>
             </div>
             </form>
 
