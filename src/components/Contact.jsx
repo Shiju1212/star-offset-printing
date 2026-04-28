@@ -121,7 +121,6 @@ export default function Contact() {
                   <path d="M2 8h12M9 4l5 4-5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
-              <input type="hidden" name="_next" value="https://starprinting.in/thank-you"></input>
             </div>
             </form>
 
